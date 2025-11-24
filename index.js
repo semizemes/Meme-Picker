@@ -2,6 +2,14 @@ import { catsData } from "./data.js";
 
 const emotionRadios = document.getElementById("emotion-radios");
 
+emotionRadios.addEventListener('change', highlightCheckedOption)
+
+function highlightCheckedOption(e) {
+  console.log(e);
+  document.getElementById(e.target.id).classList.add("highlight");
+}
+
+// making emotions array and sorted duplicate elements
 function getEmotionsArray(cats) {
   const emotionsArray = [];
 
@@ -16,6 +24,8 @@ function getEmotionsArray(cats) {
   return emotionsArray;
 }
 
+
+// get emotions array and render in page
 function renderEmotionsRadios(cats) {
   const emotions = getEmotionsArray(cats);
 
