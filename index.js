@@ -31,6 +31,7 @@ function getEmotionsArray(cats) {
   return emotionsArray;
 }
 
+//get matching cats array from selected options
 function getMatchingCatsArray() {
   if (document.querySelector('input[type="radio"]:checked')) {
     const isGif = gifsOnlyOption.checked;
@@ -39,9 +40,15 @@ function getMatchingCatsArray() {
     ).value;
 
     const matchingCatsArray = catsData.filter(function(cat){
-      return cat.emotionTags.includes(selectedEmotion)
+
+      if(isGif){
+        return cat.emotionTags.includes(selectedEmotion) && cat.isGif
+      } else {
+        return cat.emotionTags.includes(selectedEmotion)
+      }
     })
   }
+  return matchingCatsArray
 }
 
 // get emotions array and render in page
