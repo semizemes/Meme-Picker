@@ -32,7 +32,11 @@ function getEmotionsArray(cats) {
 }
 
 function getSingleCatObject() {
-  console.log(getMatchingCatsArray());
+  const catsArray = getMatchingCatsArray()
+
+  if(catsArray.length === 1){
+    return catsArray[0]
+  }
 }
 
 function renderCat() {
