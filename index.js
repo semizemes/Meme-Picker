@@ -11,37 +11,6 @@ emotionRadios.addEventListener("change", highlightCheckedOption);
 getImageBtn.addEventListener("click", renderCat);
 memeModalCloseBtn.addEventListener("click", resetForm);
 
-function highlightCheckedOption(e) {
-  const radios = document.getElementsByClassName("radio");
-  for (const radio of radios) {
-    radio.classList.remove("highlight");
-  }
-
-  document.getElementById(e.target.id).parentElement.classList.add("highlight");
-}
-
-// making emotions array and sorted duplicate elements
-function getEmotionsArray(cats) {
-  const emotionsArray = [];
-
-  for (const cat of cats) {
-    for (const emotion of cat.emotionTags) {
-      if (!emotionsArray.includes(emotion)) {
-        emotionsArray.push(emotion);
-      }
-    }
-  }
-
-  return emotionsArray;
-}
-
-function getSingleCatObject() {
-  const catsArray = getMatchingCatsArray();
-
-  const randomCatId = Math.floor(Math.random() * catsArray.length);
-  return catsArray[randomCatId];
-}
-
 function renderCat() {
   const catObject = getSingleCatObject();
 
@@ -53,6 +22,13 @@ function renderCat() {
     >`;
 
   memeModal.style.display = "flex";
+}
+
+function getSingleCatObject() {
+  const catsArray = getMatchingCatsArray();
+
+  const randomCatId = Math.floor(Math.random() * catsArray.length);
+  return catsArray[randomCatId];
 }
 
 //get matching cats array from selected options
@@ -81,6 +57,30 @@ function resetForm() {
   document
     .querySelector('[class="radio highlight"]')
     .classList.remove("highlight");
+}
+
+function highlightCheckedOption(e) {
+  const radios = document.getElementsByClassName("radio");
+  for (const radio of radios) {
+    radio.classList.remove("highlight");
+  }
+
+  document.getElementById(e.target.id).parentElement.classList.add("highlight");
+}
+
+// making emotions array and sorted duplicate elements
+function getEmotionsArray(cats) {
+  const emotionsArray = [];
+
+  for (const cat of cats) {
+    for (const emotion of cat.emotionTags) {
+      if (!emotionsArray.includes(emotion)) {
+        emotionsArray.push(emotion);
+      }
+    }
+  }
+
+  return emotionsArray;
 }
 
 // get emotions array and render in page
