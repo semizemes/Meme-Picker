@@ -32,11 +32,10 @@ function getEmotionsArray(cats) {
 }
 
 function getSingleCatObject() {
-  const catsArray = getMatchingCatsArray()
+  const catsArray = getMatchingCatsArray();
 
-  if(catsArray.length === 1){
-    return catsArray[0]
-  }
+  const randomCatId = Math.floor(Math.random() * catsArray.length);
+  return catsArray[randomCatId];
 }
 
 function renderCat() {
