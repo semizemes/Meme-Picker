@@ -5,9 +5,11 @@ const getImageBtn = document.getElementById("get-image-btn");
 const gifsOnlyOption = document.getElementById("gifs-only-option");
 const memeModalInner = document.getElementById("meme-modal-inner");
 const memeModal = document.getElementById("meme-modal");
+const memeModalCloseBtn = document.getElementById("meme-modal-close-btn");
 
 emotionRadios.addEventListener("change", highlightCheckedOption);
 getImageBtn.addEventListener("click", renderCat);
+memeModalCloseBtn.addEventListener("click", resetForm);
 
 function highlightCheckedOption(e) {
   const radios = document.getElementsByClassName("radio");
@@ -48,9 +50,9 @@ function renderCat() {
       class='cat-img'
       src='./images/${catObject.image}'
       alt='${catObject.alt}'
-    >`
+    >`;
 
-  memeModal.style.display = 'flex';
+  memeModal.style.display = "flex";
 }
 
 //get matching cats array from selected options
@@ -70,6 +72,15 @@ function getMatchingCatsArray() {
     });
     return matchingCatsArray;
   }
+}
+
+function resetForm() {
+  memeModal.style.display = "none";
+  gifsOnlyOption.checked = false;
+  document.querySelector('input[type="radio"]:checked').checked = false;
+  document
+    .querySelector('[class="radio highlight"]')
+    .classList.remove("highlight");
 }
 
 // get emotions array and render in page
